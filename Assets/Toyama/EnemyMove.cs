@@ -7,7 +7,7 @@ public class EnemyMove : MonoBehaviour
     [SerializeField] GameObject _player1 = default;
     [SerializeField] float _speed = 3f;
 
-    public Player _check;
+    private Player _check;
 
     void Start()
     {
