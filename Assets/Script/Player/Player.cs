@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] float _jumpPower = 2.0f;
     [SerializeField] float _groundHeight = 0.5f;
 
+    public bool _enemyCheck = false;
     Rigidbody _rb;
     CapsuleCollider _capsule;
     float _horizontal;
@@ -98,7 +99,12 @@ public class Player : MonoBehaviour
             hit.collider.gameObject.GetComponent<IInteract>()?.Interact();
             if (hit.collider.gameObject.CompareTag("Enemy") || hit.collider.gameObject.CompareTag("Object"))
             {
-                _ability.EquipObject(hit.collider.gameObject);
+                if(hit.collider.gameObject.CompareTag("Enemy"))
+                {
+                    _enemyCheck = true;
+
+                }
+                    _ability.EquipObject(hit.collider.gameObject);
             }
             Debug.Log(hit.transform.position);
             Debug.DrawLine(hit.transform.position, hit.transform.position + Vector3.up, Color.green, 5);
