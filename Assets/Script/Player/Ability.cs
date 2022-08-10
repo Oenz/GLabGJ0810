@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Ability : MonoBehaviour
 {
-    
-    [SerializeField] GameObject _player;
+    GameObject _player;
     [SerializeField] Vector3 _offset;
     [SerializeField] float _throwPower = 5;
     [SerializeField] float _interpSpeed = 4;

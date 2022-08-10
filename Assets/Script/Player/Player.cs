@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
     {
         Vector3 rayPosition = transform.position + new Vector3(0.0f, 0.0f, 0.0f);
         Ray ray = new Ray(rayPosition, Vector3.down);
-        Debug.DrawRay(rayPosition, Vector3.down * _groundHeight, Color.red);
+        Debug.DrawRay(rayPosition, Vector3.down * _groundHeight, Color.red, 2f);
         if (Physics.Raycast(ray, _groundHeight))
         {
             Jump();
