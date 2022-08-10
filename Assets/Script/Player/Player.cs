@@ -7,14 +7,17 @@ public class Player : MonoBehaviour
     [SerializeField] float _speed = 10.0f;
     [SerializeField] float _maxSpeed = 500.0f;
     [SerializeField] float _jumpPower = 2.0f;
+    [SerializeField] float _groundHeight = 0.5f;
 
     Rigidbody _rb;
+    CapsuleCollider _capsule;
     float _horizontal;
 
 
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        _capsule = GetComponent<CapsuleCollider>();
     }
 
     void Update()
@@ -23,7 +26,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            _rb.AddForce(_rb.transform.up * _jumpPower, ForceMode.Impulse);
+           CheckIsGround();
         }
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -32,6 +35,22 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void CheckIsGround()
+    {
+        Vector3 rayPosition = transform.position + new Vector3(0.0f, 0.0f, 0.0f);
+        Ray ray = new Ray(rayPosition, Vector3.down);
+        Debug.DrawRay(rayPosition, Vector3.down * _groundHeight, Color.red);
+        if (Physics.Raycast(ray, _groundHeight))
+        {
+            Jump();
+        }
+    }
+
+    void Jump()
+    {
+        _rb.AddForce(_rb.transform.up * _jumpPower, ForceMode.Impulse);
+    }
+    
     private void FixedUpdate()
     {
         Vector3 dir = gameObject.transform.forward * _horizontal * _speed;
