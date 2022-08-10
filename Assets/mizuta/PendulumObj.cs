@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PendulumObj : MonoBehaviour,IInteract
 {
+    [SerializeField] float _x = 0f;
+    [SerializeField] float _y = 0f;
+    [SerializeField] float _z = 0f;
     [SerializeField]
     private bool activate = false;//プレイヤーから選択されてるか否かフラグ
     private Rigidbody rb;
@@ -26,7 +29,7 @@ public class PendulumObj : MonoBehaviour,IInteract
     {
         //振り子の動きが発生するときiskinematic解除
         rb.isKinematic = false;
-        rb.AddForce(10,0, 0,ForceMode.Impulse);
+        rb.AddForce(_x,_y, _z,ForceMode.Impulse);
         activate = false;
     }
 }
