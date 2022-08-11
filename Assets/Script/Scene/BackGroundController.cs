@@ -6,6 +6,9 @@ public class BackGroundController : MonoBehaviour
 {
     [SerializeField] float _bgMovePercentX = 0.25f;
     [SerializeField] float _bgMovePercentY = 0.05f;
+    [SerializeField] float _bgSizeX = 50;
+    [SerializeField] SpriteRenderer _sp1;
+    [SerializeField] SpriteRenderer _sp2;
     Transform _player;
     void Start()
     {
@@ -27,5 +30,8 @@ public class BackGroundController : MonoBehaviour
         //Debug.Log(_beforePos.x);
         gameObject.transform.position = move;
         _beforePos = _player.position;
+
+
+        //_player.position.x
     }
 }
