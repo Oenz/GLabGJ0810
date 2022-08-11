@@ -7,8 +7,7 @@ public class BackGroundController : MonoBehaviour
     [SerializeField] float _bgMovePercentX = 0.25f;
     [SerializeField] float _bgMovePercentY = 0.05f;
     [SerializeField] float _bgSizeX = 50;
-    [SerializeField] SpriteRenderer _sp1;
-    [SerializeField] SpriteRenderer _sp2;
+    [SerializeField] Transform _sp1;
     Transform _player;
     void Start()
     {
@@ -19,10 +18,12 @@ public class BackGroundController : MonoBehaviour
 
     Vector3 _beforePos;
     [SerializeField] Vector3 _addPos;
+    [SerializeField] Vector3 _move;
     void Update()
     {
         Vector3 pos = gameObject.transform.position;
         _beforePos = _beforePos - _player.position;
+        _move += _beforePos;
         _beforePos.x *= _bgMovePercentX;
         _beforePos.y *= _bgMovePercentY;
         _addPos += _beforePos;
@@ -32,6 +33,5 @@ public class BackGroundController : MonoBehaviour
         _beforePos = _player.position;
 
 
-        //_player.position.x
     }
 }

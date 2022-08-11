@@ -115,7 +115,7 @@ public class Player : MonoBehaviour
         dir *= _interactReach;
         RaycastHit hit;
         Debug.DrawRay(s, dir, Color.red, 2f);
-        if (Physics.Raycast(s, dir, out hit))
+        if (Physics.Raycast(s, dir, out hit, _interactReach))
         {
             hit.collider.gameObject.GetComponent<IInteract>()?.Interact();
             Object obj = hit.collider.gameObject.GetComponent<Object>();
@@ -125,6 +125,10 @@ public class Player : MonoBehaviour
                 _ability.EquipObject(hit.collider.gameObject);
                 //_enemyCheck = hit.collider.gameObject.CompareTag("Enemy");
                 if (hit.collider.gameObject.tag == "Enemy")
+                {
+                    _enemyCheck = true;
+                }
+                else
                 {
                     _enemyCheck = false;
                 }

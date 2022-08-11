@@ -12,9 +12,12 @@ public class Spawner : MonoBehaviour
 
     private GameObject enemy = null;
 
+    bool _active;
+
     private float _elapsed; // 経過時間
     void Update()
     {
+        if (!_active) return;
         _elapsed += Time.deltaTime;
         if (this.transform.childCount < spawnmax)//子オブジェクトの数
         {
@@ -27,6 +30,22 @@ public class Spawner : MonoBehaviour
                 enemy.transform.parent = this.transform;
                 var rigidbody = enemy.GetComponent<Rigidbody>();
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            _active = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            _active = false;
         }
     }
 }

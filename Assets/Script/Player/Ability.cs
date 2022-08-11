@@ -99,8 +99,9 @@ public class Ability : MonoBehaviour
 
             
         }
-
-       _current.transform.Rotate(Vector3.up + Vector3.right * 0.1f);
+        Vector3 dir = Vector3.forward;
+        if (!_player._enemyCheck) dir += Vector3.right;
+       _current.transform.Rotate(dir * 0.5f);
     }
 
     public bool ThrowObject(Vector3 targetPos)
