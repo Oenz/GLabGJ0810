@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8570054697795141581}
+  - component: {fileID: 5552470051487464709}
   m_Layer: 0
   m_Name: Floor1
   m_TagString: Untagged
@@ -32,6 +33,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5552470051487464709
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776996889757765207}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.15877862, y: 0.005876659, z: 0.030516539}
+  m_Center: {x: -0.0016323276, y: -0.0014053583, z: -0.00025486588}
 --- !u!1 &7622336317337602360
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,6 +57,7 @@ GameObject:
   - component: {fileID: 7292397924449309510}
   - component: {fileID: 5578418486770087130}
   - component: {fileID: 6158345057741836405}
+  - component: {fileID: 1899081619050646833}
   m_Layer: 0
   m_Name: pasted__pCube1
   m_TagString: Untagged
@@ -115,3 +130,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1899081619050646833
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7622336317337602360}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.15873799, y: 0.01, z: 0.027702842}
+  m_Center: {x: 0, y: 0, z: -0.0006202134}
