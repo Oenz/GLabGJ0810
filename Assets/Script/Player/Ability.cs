@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Ability : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Ability : MonoBehaviour
     [SerializeField] float _gaugeScale = 2;
     [SerializeField] int _level = 0;
     [SerializeField] float _gauge = 0;
+    [SerializeField] Slider _slider;
 
     float _maxGauge = 0;
 
@@ -58,6 +60,10 @@ public class Ability : MonoBehaviour
 
     private void Update()
     {
+        if(_slider != null)
+        {
+            _slider.value = 1 - _gauge / _maxGauge;
+        }
         _pac.SetHolding(IsActive());
         if (_current == null)
         {

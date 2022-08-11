@@ -20,10 +20,10 @@ public class Health : MonoBehaviour
 
     public void ReceiveDamage(float amount)
     {
-        _perfect = 1 - _maxHealth / _health;
+        _perfect = 1 - _health / _maxHealth;
         if(_slider != null)
         {
-            _slider.value = amount;
+            _slider.value = _perfect;
         }
 
         _health = Mathf.Max(_health - amount, 0);
@@ -33,6 +33,6 @@ public class Health : MonoBehaviour
 
     private void Update()
     {
-        ReceiveDamage(1f * Time.deltaTime);
+        //ReceiveDamage(1f * Time.deltaTime);
     }
 }
