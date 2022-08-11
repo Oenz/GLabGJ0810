@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] float damage = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,4 +27,13 @@ public class Enemy : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<Health>()?.ReceiveDamage(damage);
+        }
+    }
+
 }

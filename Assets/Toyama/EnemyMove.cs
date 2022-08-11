@@ -14,6 +14,7 @@ public class EnemyMove : MonoBehaviour
     void Start()
     {
         _check = FindObjectOfType<Player>();
+        _player1 = GameObject.FindObjectOfType<Player>().gameObject;
         _anim = GetComponent<Animator>();
     }
     private void Update()
