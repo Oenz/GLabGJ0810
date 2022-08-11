@@ -100,7 +100,7 @@ public class Ability : MonoBehaviour
             
         }
 
-        _current.transform.Rotate(Vector3.up + Vector3.right * 0.1f);
+       _current.transform.Rotate(Vector3.up + Vector3.right * 0.1f);
     }
 
     public bool ThrowObject(Vector3 targetPos)
