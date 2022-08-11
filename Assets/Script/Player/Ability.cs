@@ -61,6 +61,11 @@ public class Ability : MonoBehaviour
         _currentMass = _currentRigidbody.mass;
         _current.layer = 11;
         _pac.SetEquip();
+
+        if(obj.CompareTag("Enemy"))
+        {
+            obj.GetComponent<EnemyMove>().freeze = true;
+        }
     }
 
 
@@ -131,6 +136,10 @@ public class Ability : MonoBehaviour
 
     void ClearObject()
     {
+        if (_current.CompareTag("Enemy"))
+        {
+            _current.GetComponent<EnemyMove>().freeze = false;
+        }
 
         _current.layer = 0;
         _currentRigidbody.useGravity = true;

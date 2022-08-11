@@ -11,6 +11,8 @@ public class EnemyMove : MonoBehaviour
     private Player _check;
     bool _plt = false;
 
+    public bool freeze = false;
+
     void Start()
     {
         _check = FindObjectOfType<Player>();
@@ -26,7 +28,7 @@ public class EnemyMove : MonoBehaviour
     }
     private void OnTriggerStay(Collider collision)
     {
-        if (collision.gameObject.tag == "Player" && _check._enemyCheck == false)
+        if (collision.gameObject.tag == "Player" && freeze == false)
         {
             _plt = true;
             _anim.SetBool("move",true);
