@@ -123,10 +123,13 @@ public class Player : MonoBehaviour
             if(obj != null)
             {
                 _ability.EquipObject(hit.collider.gameObject);
-                _enemyCheck = hit.collider.gameObject.CompareTag("Enemy");
+                //_enemyCheck = hit.collider.gameObject.CompareTag("Enemy");
+                if (hit.collider.gameObject.tag == "Enemy")
+                {
+                    _enemyCheck = false;
+                }
             }
-                    
-            
+
             Debug.Log(hit.transform.position);
             Debug.DrawLine(hit.transform.position, hit.transform.position + Vector3.up, Color.green, 5);
         }
