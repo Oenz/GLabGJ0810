@@ -9,6 +9,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private List<AudioSource> _soundPool = new();
     [SerializeField] private int _maxPlayingSounds = 30;
 
+    [SerializeField] AudioClip BGM;
+
     private void Awake()
     {
         if (instance == null)
@@ -30,6 +32,13 @@ public class AudioManager : MonoBehaviour
             _soundPool.Add(tempSound);
         }
     }
+
+    private void Start()
+    {
+        if (BGM == null) return;
+        PlaySound(BGM, gameObject.transform.position, 1);
+    }
+
     public void PlaySound(AudioClip sound, Vector3 pos, float volume)
     {
         PlaySoundCore(sound, pos, volume);
