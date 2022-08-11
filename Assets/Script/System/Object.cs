@@ -20,10 +20,10 @@ public class Object : MonoBehaviour
     {
         if (!_isAttack) return;
         _isAttack = false;
-        if(_isTekkyuu)
+        if (_isTekkyuu)
         {
             RaycastHit[] a = Physics.SphereCastAll(transform.position, _ttekkyuuRanage, Vector3.forward);
-            foreach(RaycastHit hit in a)
+            foreach (RaycastHit hit in a)
             {
                 if (hit.collider.gameObject.CompareTag("Player")) continue;
                 hit.collider.gameObject.GetComponent<Health>()?.ReceiveDamage(_damage);
@@ -32,7 +32,13 @@ public class Object : MonoBehaviour
 
         }
         if (collision.gameObject.CompareTag("Player")) return;
+        Debug.Log(collision.gameObject.name);
         collision.gameObject.GetComponent<Health>()?.ReceiveDamage(_damage);
+        if(gameObject.CompareTag("Enemy"))
+        {
+            gameObject.GetComponent<Health>()?.ReceiveDamage(_damage);
+        }
+        Debug.Log($"{collision.gameObject.GetComponent<Health>() != null}");
     }
 
 }

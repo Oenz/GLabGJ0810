@@ -13,12 +13,13 @@ public class Ability : MonoBehaviour
     [SerializeField] int _level = 0;
     [SerializeField] float _gauge = 0;
     [SerializeField] Slider _slider;
+    [SerializeField] AudioClip _flyse;
 
     float _maxGauge = 0;
 
     float _interpPer = 1.1f;
 
-    GameObject _current;
+    [SerializeField]GameObject _current;
     Rigidbody _currentRigidbody;
     PlayerAnimController _pac;
     float _currentMass = 0;
@@ -48,6 +49,10 @@ public class Ability : MonoBehaviour
         if (_current != null || _interpPer <= 1) return;
         if (obj.GetComponent<Object>().requireLevel > _level) return;
 
+        if (_flyse != null)
+        {
+            AudioManager.instance.PlaySound(_flyse, transform.position, 0);
+        }
         _current = obj;
         _interpPer = 0;
         _startPos = _current.transform.position;

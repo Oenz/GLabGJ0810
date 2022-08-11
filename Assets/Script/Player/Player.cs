@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -52,7 +53,7 @@ public class Player : MonoBehaviour
 
     void Death()
     {
-
+        SceneManager.LoadScene(0);
     }
 
     void Update()
@@ -106,7 +107,7 @@ public class Player : MonoBehaviour
         pos.z = 10.0f;
         Vector3 t = Camera.main.ScreenToWorldPoint(pos);
         t.z = 0;
-
+        Debug.DrawLine(t, t + Vector3.up, Color.blue, 2);
         if (_ability.ThrowObject(t)) return;
 
         Vector3 s = transform.position;// + transform.forward * 2;
