@@ -46,6 +46,8 @@ public class Ability : MonoBehaviour
     public void EquipObject(GameObject obj)
     {
         if (_current != null || _interpPer <= 1) return;
+        if (obj.GetComponent<Object>().requireLevel > _level) return;
+
         _current = obj;
         _interpPer = 0;
         _startPos = _current.transform.position;
