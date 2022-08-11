@@ -58,8 +58,9 @@ public class Player : MonoBehaviour
     void Update()
     {
         _horizontal = Input.GetAxis($"P{_playerIndex}Horizontal");
-        if (_ability.IsActive()) _horizontal = 0;
         IsLookRight();
+        if (_ability.IsActive()) _horizontal = 0;
+        
 
         if (Input.GetButtonDown($"P{_playerIndex}Jump"))
         {
