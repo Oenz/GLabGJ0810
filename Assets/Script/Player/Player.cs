@@ -4,26 +4,45 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] int _playerIndex = 1;
     [SerializeField] float _speed = 10.0f;
     [SerializeField] float _maxSpeed = 500.0f;
     [SerializeField] float _jumpPower = 2.0f;
     [SerializeField] float _groundHeight = 0.5f;
+    [SerializeField] float _interactReach = 20;
 
     public bool _enemyCheck = false;
     Rigidbody _rb;
     CapsuleCollider _capsule;
     float _horizontal;
     Ability _ability;
+    SpriteRenderer _sr;
+    PlayerAnimController _pac;
+
+    bool _isRight = true;
 
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _capsule = GetComponent<CapsuleCollider>();
         _ability = GetComponent<Ability>();
+        _sr = GetComponent<SpriteRenderer>();
+        _pac = GetComponent<PlayerAnimController>();
 
         var _health = GetComponent<Health>();
         _health.OnHealthChanged += HealthChange;
         _health.OnDeath += Death;
+    }
+
+    public bool IsLookRight()
+    {
+        _pac.SetRunninng(_horizontal != 0);
+        if (_horizontal != 0)
+        {
+            _isRight = _horizontal >= 0;
+        }
+        _sr.flipX = !_isRight;
+        return _isRight;
     }
 
     void HealthChange(float hp)
@@ -38,14 +57,16 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        _horizontal = Input.GetAxis("Horizontal");
+        _horizontal = Input.GetAxis($"P{_playerIndex}Horizontal");
+        if (_ability.IsActive()) _horizontal = 0;
+        IsLookRight();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetButtonDown($"P{_playerIndex}Jump"))
         {
            CheckIsGround();
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetButtonDown($"P{_playerIndex}Interact"))
         {
             Interact();
         }
@@ -91,21 +112,21 @@ public class Player : MonoBehaviour
         s.z = 0;
        // Debug.DrawLine(t, s, Color.red, 2f);
         Vector3 dir =  t - s;
-        dir *= 1000;
+        dir *= _interactReach;
         RaycastHit hit;
         Debug.DrawRay(s, dir, Color.red, 2f);
         if (Physics.Raycast(s, dir, out hit))
         {
             hit.collider.gameObject.GetComponent<IInteract>()?.Interact();
-            if (hit.collider.gameObject.CompareTag("Enemy") || hit.collider.gameObject.CompareTag("Object"))
-            {
-                if(hit.collider.gameObject.CompareTag("Enemy"))
-                {
-                    _enemyCheck = true;
+            Object obj = hit.collider.gameObject.GetComponent<Object>();
 
-                }
-                    _ability.EquipObject(hit.collider.gameObject);
+            if(obj != null)
+            {
+                _ability.EquipObject(hit.collider.gameObject);
+                _enemyCheck = hit.collider.gameObject.CompareTag("Enemy");
             }
+                    
+            
             Debug.Log(hit.transform.position);
             Debug.DrawLine(hit.transform.position, hit.transform.position + Vector3.up, Color.green, 5);
         }
