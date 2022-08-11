@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3253494829909515854}
   - component: {fileID: 3253494829909515853}
   - component: {fileID: 4067825807055697645}
+  - component: {fileID: 2177108252974574095}
   m_Layer: 0
   m_Name: NormalEnemy
   m_TagString: Enemy
@@ -166,7 +167,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba4c3a06b7426004ab38caa7b8125c62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireLevel: 1
   _damage: 100
+  _isTekkyuu: 0
+  _ttekkyuuRanage: 100
+  _particle: {fileID: 0}
 --- !u!114 &3253494829909515853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,3 +202,15 @@ MonoBehaviour:
   _maxHealth: 100
   _perfect: 1
   _slider: {fileID: 0}
+--- !u!114 &2177108252974574095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3253494829909515852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28e5c6d027ee71848b873309b1ea2189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

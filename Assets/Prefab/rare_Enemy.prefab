@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3212290098714782254}
   - component: {fileID: 1394489107730110990}
   - component: {fileID: 3808807178297014848}
+  - component: {fileID: -8401862483689643969}
   m_Layer: 0
   m_Name: rare_Enemy
   m_TagString: Enemy
@@ -136,7 +137,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba4c3a06b7426004ab38caa7b8125c62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireLevel: 1
   _damage: 100
+  _isTekkyuu: 0
+  _ttekkyuuRanage: 100
+  _particle: {fileID: 0}
 --- !u!114 &3212290098714782254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,3 +185,15 @@ CapsuleCollider:
   m_Height: 4.531003
   m_Direction: 1
   m_Center: {x: -0.016483353, y: 0.12470486, z: 0}
+--- !u!114 &-8401862483689643969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8563339313460389730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28e5c6d027ee71848b873309b1ea2189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
