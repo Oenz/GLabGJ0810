@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
     }
     void Death()
     {
+        GameObject.FindObjectOfType<Ability>()?.LevelUp(1);
         Destroy(gameObject);
     }
 
