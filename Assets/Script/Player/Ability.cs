@@ -138,12 +138,21 @@ public class Ability : MonoBehaviour
     {
         if (_current.CompareTag("Enemy"))
         {
-            _current.GetComponent<EnemyMove>().freeze = false;
+            StartCoroutine(Rate());
+            
         }
 
         _current.layer = 0;
         _currentRigidbody.useGravity = true;
         _current = null;
         _currentRigidbody = null;
+    }
+
+    IEnumerator  Rate()
+    {
+        yield return new WaitForSeconds(3);
+        if (_current == null) yield return null;
+        _current.GetComponent<EnemyMove>().freeze = false;
+
     }
 }
